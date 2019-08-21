@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:42:44 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 13:25:37 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/21 13:40:23 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ t_options	ft_generate_options(int argc, const char *argv[])
 		index = 2;
 		while (index < argc)
 		{
-			if (ft_strcmp(argv[index], "-width") == 0 && index + 1 < argc)
+			if (ft_strcmp(argv[index], "-w") == 0 && index + 1 < argc)
 				options.width = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-height") == 0 && index + 1 < argc)
+			if (ft_strcmp(argv[index], "-h") == 0 && index + 1 < argc)
 				options.height = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-zoom") == 0 && index + 1 < argc)
+			if (ft_strcmp(argv[index], "-z") == 0 && index + 1 < argc)
 				options.zoom = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-amplifier") == 0 && index + 1 < argc)
+			if (ft_strcmp(argv[index], "-a") == 0 && index + 1 < argc)
 				options.amplifier = ft_atoi(argv[++index]);
 			++index;
 		}
@@ -67,8 +67,8 @@ int			main(int argc, const char *argv[])
 	env.init = 0;
 	options = ft_generate_options(argc, argv);
 	if (argc < 2)
-		ft_putstr("Usage : ./fdf <filename> [-width width] [-height height] "
-						"[-zoom zoom] [-amplifier amplifier]\n");
+		ft_putstr("Usage : ./fdf <filename> [-w width] [-h height] "
+						"[-z zoom] [-a amplifier]\n");
 	else
 		ft_display(ft_read(ft_open_file(argv[1]), options, options), options,
 				env);

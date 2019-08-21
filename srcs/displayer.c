@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:42:32 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 13:28:36 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/21 13:31:31 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ void	ft_display(t_list *points, t_options options, t_env env)
 
 	env.options = options;
 	env.points = points;
-	if (!env.init)
-		ft_generate_window(&env);
-	else
+	(!env.init) ? ft_generate_window(&env) : 
 		mlx_clear_window(env.mlx_data.mlx_id, env.mlx_data.window_id);
 	while (points && points->next)
 	{
