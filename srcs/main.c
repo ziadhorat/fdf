@@ -6,12 +6,21 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:42:44 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 11:42:45 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/21 13:25:37 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "../includes/fdf.h"
+
+t_options	ft_generate_options2(t_options options)
+{
+	if (options.amplifier <= 0)
+		options.amplifier = 1;
+	if (options.zoom <= 0)
+		options.zoom = 1;
+	return (options);
+}
 
 t_options	ft_generate_options(int argc, const char *argv[])
 {
@@ -39,11 +48,7 @@ t_options	ft_generate_options(int argc, const char *argv[])
 			++index;
 		}
 	}
-	if (options.amplifier <= 0)
-		options.amplifier = 1;
-	if (options.zoom <= 0)
-		options.zoom = 1;
-	return (options);
+	return (ft_generate_options2(options));
 }
 
 int			ft_open_file(const char *filename)

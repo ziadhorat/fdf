@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:42:32 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 11:42:34 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/21 13:28:36 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ t_point	*ft_get_next_line(t_list *points)
 	return (NULL);
 }
 
+int		fdf_exit(t_env env)
+{
+	(void)env;
+	exit(0);
+	return (0);
+}
+
 void	ft_display(t_list *points, t_options options, t_env env)
 {
 	t_point	*point1;
@@ -115,5 +122,6 @@ void	ft_display(t_list *points, t_options options, t_env env)
 	if (points)
 		ft_display_point(((t_point*)(points->content))->x,
 							((t_point*)(points->content))->y, env, 0x00F7F3ED);
+	mlx_hook(env.mlx_data.window_id, 17, 0, fdf_exit, &env);
 	ft_start_window(env);
 }

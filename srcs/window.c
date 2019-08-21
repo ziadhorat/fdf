@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:43:04 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 11:43:06 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/21 12:51:43 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,16 @@ void	ft_start_window(t_env env)
 {
 	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
 					env.options.width - 130, env.options.height - 80,
-					0x00FFFFFF, "> = Increase");
+					0x00FFFFFF, "> Size+");
 	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
 					env.options.width - 130, env.options.height - 65,
-					0x00FFFFFF, "< = Decrease");
+					0x00FFFFFF, "< Size-");
 	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
 					env.options.width - 130, env.options.height - 40,
-					0x00FFFFFF, "+ = Zoom in");
+					0x00FFFFFF, "+ Zoom+");
 	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
 					env.options.width - 130, env.options.height - 25,
-					0x00FFFFFF, "- = Zoom out");
-	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
-					env.options.width - (env.options.width - 15),
-					env.options.height - 70, 0x00FFFFFF, "RIGHT = Move right");
-	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
-					env.options.width - (env.options.width - 15),
-					env.options.height - 55, 0x00FFFFFF, "LEFT  = Move left");
-	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
-					env.options.width - (env.options.width - 15),
-					env.options.height - 40, 0x00FFFFFF, "UP    = Move up");
-	mlx_string_put(env.mlx_data.mlx_id, env.mlx_data.window_id,
-					env.options.width - (env.options.width - 15),
-					env.options.height - 25, 0x00FFFFFF, "DOWN  = Move down");
+					0x00FFFFFF, "- Zoom-");
 	mlx_loop(env.mlx_data.mlx_id);
 }
 
