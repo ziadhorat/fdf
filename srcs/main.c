@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 11:42:44 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 13:40:23 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/22 08:59:34 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			main(int argc, const char *argv[])
 	env.init = 0;
 	options = ft_generate_options(argc, argv);
 	if (argc < 2)
-		ft_putstr("Usage : ./fdf <filename> [-w width] [-h height] "
+		ft_putstr("Usage: ./fdf <filename> [-w width] [-h height] "
 						"[-z zoom] [-a amplifier]\n");
 	else
 		ft_display(ft_read(ft_open_file(argv[1]), options, options), options,
