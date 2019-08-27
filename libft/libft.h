@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 11:49:55 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/27 11:50:19 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 12:23:19 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int					ft_factorial(int nb);
 int					ft_power(int nb, int pwr);
 char				*ft_strrev(char *str);
 void				ft_foreach(int *tab, int len, void(*f)(int));
+void				ft_freestrarr(char **arr);
 
 #endif
