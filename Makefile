@@ -1,24 +1,17 @@
 NAME=fdf
-
 SRCS_PATH=./srcs/
-SRCS_FILES=displayer.c reader.c main.c listener.c debugger.c error.c window.c
+SRCS_FILES=fdf_cal_matrice.c fdf_draw.c fdf_error.c fdf_helper.c fdf_hook.c fdf_matrice.c main.c parse_arg.c
 SRCS=$(addprefix $(SRCS_PATH), $(SRCS_FILES))
-
-OBJECTS_PATH=./objs/
+OBJECTS_PATH=./srcs/
 OBJECTS_FILES=$(SRCS_FILES:.c=.o)
 OBJECTS=$(addprefix $(OBJECTS_PATH), $(OBJECTS_FILES))
-
 COMPILE=gcc -Wall -Wextra -Werror
-
 INCLUDES=-I./includes -I./libft
 HEADER=./includes/fdf.h
-
 MLX=-L/usr/local/lib -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
-
 LIB_NAME=libft.a
 LIB_PATH=./libft/
 LIB=$(LIB_PATH)$(LIB_NAME)
-
 COLOR_RESET=\033[0m
 COLOR_PENDING=\033[0;33m
 COLOR_SUCCESS=\033[0;32m

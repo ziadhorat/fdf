@@ -5,72 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 11:42:44 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/22 08:59:34 by zmahomed         ###   ########.fr       */
+/*   Created: 2019/08/23 09:48:13 by zmahomed          #+#    #+#             */
+/*   Updated: 2019/08/23 09:52:56 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "../includes/fdf.h"
 
-t_options	ft_generate_options2(t_options options)
+int		expose_hook(t_env *e)
 {
-	if (options.amplifier <= 0)
-		options.amplifier = 1;
-	if (options.zoom <= 0)
-		options.zoom = 1;
-	return (options);
+	draw_reload(e);
+	return (0);
 }
 
-t_options	ft_generate_options(int argc, const char *argv[])
+void	display_controls(void)
 {
-	int			index;
-	t_options	options;
+	ft_putstr("\
+Translation:\n\
+	Y: Key: UP, DOWN\n\
+	X: Key: LEFT, RIGHT\n\
+\n\
+Rotation:\n\
+	X: Keypad: 1, 4\n\
+	Y: Keypad: 2, 5\n\
+	Z: Keypad: 3, 6\n\
+\n\
+Zoom:\n\
+	IN: Keypad: +\n\
+	OUT: Keypad: -\n\
+");
+}
 
-	options.width = WINDOW_WIDTH;
-	options.height = WINDOW_HEIGHT;
-	options.zoom = 10;
-	options.inclination = INCLINATION;
-	options.amplifier = HEIGHT_AMPLIFIER;
-	if (argc > 2)
+int		main(int argc, char **argv)
+{
+	t_env	*e;
+	t_map	*map;
+
+	if (argc == 2)
 	{
-		index = 2;
-		while (index < argc)
-		{
-			if (ft_strcmp(argv[index], "-w") == 0 && index + 1 < argc)
-				options.width = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-h") == 0 && index + 1 < argc)
-				options.height = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-z") == 0 && index + 1 < argc)
-				options.zoom = ft_atoi(argv[++index]);
-			if (ft_strcmp(argv[index], "-a") == 0 && index + 1 < argc)
-				options.amplifier = ft_atoi(argv[++index]);
-			++index;
-		}
+		if (!(e = (t_env*)malloc(sizeof(t_env))))
+			fdf_malloc_error();
+		map = ft_parse_map(argv, 0);
+		if (map->len == 0 || map->lines[0]->len == 0)
+			fdf_map_error();
+		e->map = map;
+		get_center(e);
+		display_controls();
+		draw_windows("FDF", WINDOW_SIZE_W, WINDOW_SIZE_H, e);
+		adapt_map(e);
+		mlx_expose_hook(e->win, expose_hook, e);
+		mlx_hook(e->win, 2, 3, key_hook, e);
+		mlx_loop(e->mlx);
 	}
-	return (ft_generate_options2(options));
-}
-
-int			ft_open_file(const char *filename)
-{
-	int fd;
-
-	fd = open(filename, O_RDONLY);
-	return (fd);
-}
-
-int			main(int argc, const char *argv[])
-{
-	t_options	options;
-	t_env		env;
-
-	env.init = 0;
-	options = ft_generate_options(argc, argv);
-	if (argc < 2)
-		ft_putstr("Usage: ./fdf <filename> [-w width] [-h height] "
-						"[-z zoom] [-a amplifier]\n");
 	else
-		ft_display(ft_read(ft_open_file(argv[1]), options, options), options,
-				env);
+		fdf_arg_error();
 	return (0);
 }
