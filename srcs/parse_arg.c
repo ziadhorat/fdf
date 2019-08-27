@@ -6,11 +6,26 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:48:23 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/23 09:52:59 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 11:52:08 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	ft_freestrarr(char **arr)
+{
+	int i;
+
+	if (!arr)
+		return ;
+	i = -1;
+	while (arr[++i])
+	{
+		free(arr[i]);
+	}
+	free(arr);
+	arr = NULL;
+}
 
 int		ft_getnbr(char *str)
 {
@@ -50,6 +65,7 @@ int		ft_points(char *line, int nb_line, t_point ***array_points)
 		(*array_points)[i] = a_point;
 		i++;
 	}
+	ft_freestrarr(array_str);
 	return (i);
 }
 

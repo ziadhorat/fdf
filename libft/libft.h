@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 11:49:55 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/21 13:18:00 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 11:50:19 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ size_t				ft_strlcat(char *dest, const char *src, size_t size);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstaddend(t_list **alst, t_list *new);
+
 /*
 ** Bonus functions
 */
