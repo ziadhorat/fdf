@@ -1,6 +1,6 @@
 NAME=fdf
 SRCS_PATH=./srcs/
-SRCS_FILES=fdf_cal_matrice.c fdf_draw.c fdf_error.c fdf_helper.c fdf_hook.c fdf_matrice.c main.c parse_arg.c
+SRCS_FILES=calc_matrice.c draw.c error.c helper.c hook.c matrice.c main.c parse_arg.c
 SRCS=$(addprefix $(SRCS_PATH), $(SRCS_FILES))
 OBJECTS_PATH=./srcs/
 OBJECTS_FILES=$(SRCS_FILES:.c=.o)

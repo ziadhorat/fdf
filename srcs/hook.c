@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:48:07 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/27 12:35:42 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 13:15:37 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int				key_hook(int keycode, t_env *e)
 	{
 		mlx_destroy_window(e->mlx, e->win);
 		free(e);
-		while (1);
 		exit(0);
 	}
 	key_hook_rotation(keycode, e);
