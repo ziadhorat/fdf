@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_draw.c                                         :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:47:55 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/23 09:52:43 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 13:39:17 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void			draw_windows(char *title, int weight, int height, t_env *e)
 	e->win = mlx_new_window(e->mlx, weight, height, title);
 }
 
-static void		draw_line_params(t_point *point1, t_point *point2, double *tab)
+int				draw_line_params(t_point *point1, t_point *point2, double *tab)
 {
 	tab[0] = fabs(point1->x - point2->x);
 	tab[1] = point1->x < point2->x ? 1 : -1;
 	tab[2] = fabs(point1->y - point2->y);
 	tab[3] = point1->y < point2->y ? 1 : -1;
 	tab[4] = (tab[0] > tab[2] ? tab[0] : -tab[2]) * 0.5;
+	return (1);
 }
 
 static void		draw_point(t_point *point, t_env *e, int color)
@@ -44,7 +45,7 @@ static void		draw_line(t_point p1, t_point p2, t_env *e)
 
 	if (!point_out_window(&p1) && !point_out_window(&p2))
 		return ;
-	draw_line_params(&p1, &p2, tab), state = 1;
+	state = draw_line_params(&p1, &p2, tab);
 	while (state == 1 && !((int)p1.x == (int)p2.x && (int)p1.y == (int)p2.y))
 	{
 		if (point_out_window(&p1) == 1)

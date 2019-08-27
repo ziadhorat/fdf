@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:47:38 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/27 12:25:15 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 13:41:46 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@
 # define WINDOW_SIZE_H 1000
 # define WINDOW_SIZE_W 2000
 
-/*
-**	Move pixel
-*/
-
 # define MOVE_UP -100
 # define MOVE_DOWN 100
 # define MOVE_LEFT -100
@@ -48,10 +44,6 @@
 # define MOVE_ROT_Y_D M_PI / 64
 # define MOVE_ROT_Z_U -M_PI / 64
 # define MOVE_ROT_Z_D M_PI / 64
-
-/*
-**	Key code
-*/
 
 # define KEY_ESC 53
 
@@ -119,61 +111,26 @@ typedef struct	s_matrice {
 	double d4;
 }				t_matrice;
 
-/*
-**	Parse Map
-**	\file parse_arg.c
-*/
 t_map			*ft_parse_map(char **av, int fd);
 int				ft_points(char *line, int nb_line, t_point ***array_points);
 void			ft_parse_points (char *nb_str);
 int				ft_getnbr(char *str);
 int				ft_map_line(char *map);
-
-/*
-**	Draw Map
-**	\file fdf_draw.c
-*/
 void			draw_windows(char *title, int weight, int height, t_env *e);
 void			draw_map(t_env *e);
-
-/*
-**	Gestion Error
-**	\file fdf_error.c
-*/
 void			fdf_exit(void);
 void			fdf_malloc_error(void);
 void			fdf_map_error(void);
 void			fdf_arg_error(void);
-
-/*
-**	Calcul of matrice
-**	\file fdf_cal_matrice.c
-*/
-
 void			ft_cal_rotation(t_env *e, double rot, char axe);
 void			ft_cal_translat(t_env *e, double x, double y, double z);
 void			ft_cal_scale(t_env *e, double s);
-
-/*
-**	Mtarice init
-**	\file fdf_matrice.c
-*/
 t_matrice		*ft_matrice_rotation_x(double beta);
 t_matrice		*ft_matrice_rotation_y(double beta);
 t_matrice		*ft_matrice_rotation_z(double beta);
 t_matrice		*ft_matrice_translation(double tx, double ty, double tz);
 t_matrice		*ft_matrice_scale(double s);
-
-/*
-**	Hook
-**	\file fdf_hook.c
-*/
 int				key_hook(int keycode, t_env *e);
-
-/*
-**	Function Helpers
-**	\file fdf_helper.c
-*/
 int				get_color(t_point *point1, t_point *point2);
 void			get_center(t_env *e);
 void			draw_reload(t_env *e);

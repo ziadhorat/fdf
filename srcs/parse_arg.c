@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:48:23 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/27 13:27:43 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/27 13:43:50 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int		ft_getnbr(char *str)
 
 	neg = 0;
 	if (str[0] == '-')
-		neg = 1, str++;
+	{
+		neg = 1;
+		str++;
+	}
 	nbr = 0;
 	while ((*str >= '0') && (*str <= '9'))
 		nbr = (nbr * 10) + *str++ - '0';
@@ -94,8 +97,7 @@ t_map	*ft_parse_map(char **av, int fd)
 				fdf_malloc_error();
 			line_map->len = ft_points(line, nb_line, &array_points);
 			line_map->points = array_points;
-			map->lines[nb_line] = line_map;
-			nb_line++;
+			map->lines[nb_line++] = line_map;
 			free(line);
 		}
 		map->len = nb_line;
