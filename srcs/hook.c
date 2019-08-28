@@ -12,53 +12,53 @@
 
 #include "../includes/fdf.h"
 
-static	void	key_hook_rotation(int keycode, t_env *e)
+static	void	k_hook_rotation(int kcode, t_env *e)
 {
-	if (keycode == KEY_ROT_X_U)
+	if (kcode == k_ROT_X_U)
 		ft_cal_rotation(e, MOVE_ROT_X_U, 'x');
-	else if (keycode == KEY_ROT_X_D)
+	else if (kcode == k_ROT_X_D)
 		ft_cal_rotation(e, MOVE_ROT_X_D, 'x');
-	else if (keycode == KEY_ROT_Y_U)
+	else if (kcode == k_ROT_Y_U)
 		ft_cal_rotation(e, MOVE_ROT_Y_U, 'y');
-	else if (keycode == KEY_ROT_Y_D)
+	else if (kcode == k_ROT_Y_D)
 		ft_cal_rotation(e, MOVE_ROT_Y_D, 'y');
-	else if (keycode == KEY_ROT_Z_U)
+	else if (kcode == k_ROT_Z_U)
 		ft_cal_rotation(e, MOVE_ROT_Z_U, 'z');
-	else if (keycode == KEY_ROT_Z_D)
+	else if (kcode == k_ROT_Z_D)
 		ft_cal_rotation(e, MOVE_ROT_Z_D, 'z');
 }
 
-static	void	key_hook_translation(int keycode, t_env *e)
+static	void	k_hook_translation(int kcode, t_env *e)
 {
-	if (keycode == KEY_UP)
+	if (kcode == k_UP)
 		ft_cal_translat(e, 0, MOVE_UP, 0);
-	else if (keycode == KEY_DOWN)
+	else if (kcode == k_DOWN)
 		ft_cal_translat(e, 0, MOVE_DOWN, 0);
-	else if (keycode == KEY_LEFT)
+	else if (kcode == k_LEFT)
 		ft_cal_translat(e, MOVE_LEFT, 0, 0);
-	else if (keycode == KEY_RIGHT)
+	else if (kcode == k_RIGHT)
 		ft_cal_translat(e, MOVE_RIGHT, 0, 0);
 }
 
-static	void	key_hook_scale(int keycode, t_env *e)
+static	void	k_hook_scale(int kcode, t_env *e)
 {
-	if (keycode == KEY_ZOOM_IN)
+	if (kcode == k_ZOOM_IN)
 		ft_cal_scale(e, MOVE_ZOOM_IN);
-	else if (keycode == KEY_ZOOM_OUT)
+	else if (kcode == k_ZOOM_OUT)
 		ft_cal_scale(e, MOVE_ZOOM_OUT);
 }
 
-int				key_hook(int keycode, t_env *e)
+int				k_hook(int kcode, t_env *e)
 {
-	if (keycode == KEY_ESC)
+	if (kcode == k_ESC)
 	{
 		mlx_destroy_window(e->mlx, e->win);
 		free(e);
 		exit(0);
 	}
-	key_hook_rotation(keycode, e);
-	key_hook_translation(keycode, e);
-	key_hook_scale(keycode, e);
+	k_hook_rotation(kcode, e);
+	k_hook_translation(kcode, e);
+	k_hook_scale(kcode, e);
 	draw_reload(e);
 	return (0);
 }

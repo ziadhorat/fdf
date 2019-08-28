@@ -45,22 +45,22 @@
 # define MOVE_ROT_Z_U -M_PI / 64
 # define MOVE_ROT_Z_D M_PI / 64
 
-# define KEY_ESC 53
+# define k_ESC 53
 
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
+# define k_UP 126
+# define k_DOWN 125
+# define k_LEFT 123
+# define k_RIGHT 124
 
-# define KEY_ZOOM_IN 69
-# define KEY_ZOOM_OUT 78
+# define k_ZOOM_IN 69
+# define k_ZOOM_OUT 78
 
-# define KEY_ROT_X_U 86
-# define KEY_ROT_X_D 83
-# define KEY_ROT_Y_U 87
-# define KEY_ROT_Y_D 84
-# define KEY_ROT_Z_U 88
-# define KEY_ROT_Z_D 85
+# define k_ROT_X_U 86
+# define k_ROT_X_D 83
+# define k_ROT_Y_U 87
+# define k_ROT_Y_D 84
+# define k_ROT_Z_U 88
+# define k_ROT_Z_D 85
 
 typedef struct	s_point {
 	double	x;
@@ -114,7 +114,6 @@ typedef struct	s_matrice {
 t_map			*ft_parse_map(char **av, int fd);
 int				ft_points(char *line, int nb_line, t_point ***array_points);
 void			ft_parse_points (char *nb_str);
-int				ft_getnbr(char *str);
 int				ft_map_line(char *map);
 void			draw_windows(char *title, int weight, int height, t_env *e);
 void			draw_map(t_env *e);
@@ -130,7 +129,7 @@ t_matrice		*ft_matrice_rotation_y(double beta);
 t_matrice		*ft_matrice_rotation_z(double beta);
 t_matrice		*ft_matrice_translation(double tx, double ty, double tz);
 t_matrice		*ft_matrice_scale(double s);
-int				key_hook(int keycode, t_env *e);
+int				k_hook(int kcode, t_env *e);
 int				get_color(t_point *point1, t_point *point2);
 void			get_center(t_env *e);
 void			draw_reload(t_env *e);
