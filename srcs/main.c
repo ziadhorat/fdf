@@ -6,11 +6,58 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 09:48:13 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/08/27 13:27:07 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/08/28 10:08:08 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+int		number_count(char *line)
+{
+	int		i;
+	int		numcount;
+
+	i = 0;
+	numcount = 0;
+	while (line[i])
+	{
+		if ((line[i] >= '0' && line[i] <= '9') || line[i] == ' ')
+		{
+			if (line[i] >= '0' && line[i] <= '9')
+				if (line[i + 1] == ' ' || line[i + 1] == '\0' || line[i + 1] == 'x')
+					numcount++;
+		}
+		else
+		{
+			free(line);
+			fdf_map_error();
+		}
+		i++;
+	}
+	return (numcount);
+}
+
+void	mapcheck(char **argv)
+{
+	int		fd;
+	char	*line;
+	int		linelen;
+	int		i;
+
+	linelen = 0;
+	if (ft_strcmp(&argv[1][ft_strlen(argv[1])-4], ".fdf"))
+		fdf_map_error();
+	fd = open(argv[1], O_RDONLY);
+	while (get_next_line(fd, &line) == 1)
+	{
+		i = number_count(line);
+		if (linelen == 0)
+			linelen = number_count(line);
+		free(line);
+		if (i != linelen)
+			fdf_map_error();
+	}
+}
 
 int		expose_hook(t_env *e)
 {
@@ -41,6 +88,7 @@ int		main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+//		mapcheck(argv);
 		if (!(e = (t_env*)malloc(sizeof(t_env))))
 			fdf_malloc_error();
 		map = ft_parse_map(argv, 0);
